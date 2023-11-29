@@ -49,7 +49,7 @@ jobs:
         run: |
           set CURRENT_DIRECTORY=%CD%
           curl https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack -L -O &&^
-          7z x Keil.STM32F1xx_DFP.2.4.1.pack -o"%CURRENT_DIRECTORY%\\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1" -y &&^
+          7z x Keil.STM32F1xx_DFP.2.4.1.pack -o"%CURRENT_DIRECTORY%\keil-mdk-v5.38a-portable\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1" -y &&^
           curl https://www.keil.com/pack/ARM.CMSIS.5.9.0.pack -L -O &&^
           7z x ARM.CMSIS.5.9.0.pack -o"%CURRENT_DIRECTORY%\keil-mdk-v5.38a-portable\ARM\PACK\ARM\CMSIS\5.9.0" -y
           

@@ -56,7 +56,7 @@ jobs:
       - shell: cmd
         run: |
           set CURRENT_DIRECTORY=%CD%
-          cd ${{ github.repository }} && "%CURRENT_DIRECTORY%\keil-mdk-v5.38a-portable\UV4.Portable.exe" --project=EIE3105_Lab5.uvprojx &&^
+          cd ${{ github.repository }} && "%CURRENT_DIRECTORY%\keil-mdk-v5.38a-portable\UV4.Portable.exe" --project=EIE3105_STM32F103RB_Application.uvprojx &&^
           dir
 
       - shell: cmd

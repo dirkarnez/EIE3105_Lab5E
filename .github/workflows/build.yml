@@ -43,7 +43,7 @@ jobs:
       - name: curl keil-mdk-portable-v5.38a.zip
         shell: cmd
         run: |
-          curl https://github.com/dirkarnez/internal-keil-mdk-portable/releases/download/v5.38a/keil-mdk-portable-v5.38a.zip -L -O &&^
+          curl https://github.com/dirkarnez/internal-keil-mdk-portable/releases/download/v5.38a/keil-mdk-portable-v5.38a.zip -L -O -J &&^
           7z.exe x keil-mdk-portable-v5.38a.zip -o"internal-keil-mdk-portable\v5.38a"
 
       - name: download dependencies

@@ -40,12 +40,12 @@ jobs:
           curl https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/PortableGit-2.38.1-64-bit.7z.exe -L -O &&^
           7z.exe x PortableGit-2.38.1-64-bit.7z.exe -o"PortableGit-2.38.1-64-bit"
           
-      - name: curl keil-mdk-portable-v5.38a.zip
+      - name: curl launcher and place it to installation directory
         shell: cmd
         run: |
-          curl https://github.com/dirkarnez/internal-keil-mdk-portable/releases/download/v5.38a/keil-mdk-portable-v5.38a.zip -L -O -J &&^
-          7z.exe x keil-mdk-portable-v5.38a.zip -o"internal-keil-mdk-portable\v5.38a"
-
+          curl https://github.com/dirkarnez/keil-mdk-portable-launcher/releases/download/v1.0.0/keil-mdk-portable-launcher-v1.0.0.zip -L -O -J &&^
+          7z.exe x keil-mdk-portable-launcher-v1.0.0.zip -o"internal-keil-mdk-portable\v5.38a"
+          
       - name: download dependencies
         shell: cmd
         run: |

@@ -25,7 +25,6 @@ jobs:
         with:
           repository: dirkarnez/internal-keil-mdk-portable
           path: internal-keil-mdk-portable
-          token: ${{ secrets.GH_PAT }}
           ref: main
           
       - shell: cmd

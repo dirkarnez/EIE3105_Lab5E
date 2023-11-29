@@ -20,17 +20,15 @@ jobs:
           repository: ${{ github.repository }}
           path: ${{ github.repository }}
           
-          
       - uses: actions/checkout@v4
         with:
-          repository: dirkarnez/internal-keil-mdk-portable
-          path: internal-keil-mdk-portable
-          token: ${{ secrets.GH_PAT }}
+          repository: dirkarnez/keil-mdk-v5.38a-portable
+          path: keil-mdk-v5.38a-portable
           ref: main
           
       - shell: cmd
         run: |
-          cd .\internal-keil-mdk-portable\v5.38a &&^
+          cd .\keil-mdk-v5.38a-portable &&^
           7z.exe x Keil_v5.38a.zip.001 &&^
           dir
           
@@ -44,28 +42,27 @@ jobs:
         shell: cmd
         run: |
           curl https://github.com/dirkarnez/keil-mdk-portable-launcher/releases/download/v1.0.0/keil-mdk-portable-launcher-v1.0.0.zip -L -O -J &&^
-          7z.exe x keil-mdk-portable-launcher-v1.0.0.zip -o"internal-keil-mdk-portable\v5.38a"
+          7z.exe x keil-mdk-portable-launcher-v1.0.0.zip -o"keil-mdk-v5.38a-portable"
           
       - name: download dependencies
         shell: cmd
         run: |
           set CURRENT_DIRECTORY=%CD%
           curl https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack -L -O &&^
-          7z x Keil.STM32F1xx_DFP.2.4.1.pack -o"%CURRENT_DIRECTORY%\internal-keil-mdk-portable\v5.38a\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1" -y &&^
+          7z x Keil.STM32F1xx_DFP.2.4.1.pack -o"%CURRENT_DIRECTORY%\\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1" -y &&^
           curl https://www.keil.com/pack/ARM.CMSIS.5.9.0.pack -L -O &&^
-          7z x ARM.CMSIS.5.9.0.pack -o"%CURRENT_DIRECTORY%\internal-keil-mdk-portable\v5.38a\ARM\PACK\ARM\CMSIS\5.9.0" -y
+          7z x ARM.CMSIS.5.9.0.pack -o"%CURRENT_DIRECTORY%\keil-mdk-v5.38a-portable\ARM\PACK\ARM\CMSIS\5.9.0" -y
           
-      - name: set PATH, check mingw version, cmake generate, build and install
-        shell: cmd
+      - shell: cmd
         run: |
           set CURRENT_DIRECTORY=%CD%
-          cd ${{ github.repository }} && "%CURRENT_DIRECTORY%\internal-keil-mdk-portable\v5.38a\UV4.Portable.exe" --project=EIE3105_Lab5.uvprojx &&^
+          cd ${{ github.repository }} && "%CURRENT_DIRECTORY%\keil-mdk-v5.38a-portable\UV4.Portable.exe" --project=EIE3105_Lab5.uvprojx &&^
           dir
 
       - shell: cmd
         run: |
           set CURRENT_DIRECTORY=%CD%
-          cd ${{ github.repository }} && dir /s && cd Objects && "%CURRENT_DIRECTORY%\internal-keil-mdk-portable\v5.38a\ARM\ARMCLANG\bin\armclang.exe" --version > ARMCLANG_VERSION.txt
+          cd ${{ github.repository }} && dir /s && cd Objects && "%CURRENT_DIRECTORY%\keil-mdk-v5.38a-portable\ARM\ARMCLANG\bin\armclang.exe" --version > ARMCLANG_VERSION.txt
           
       - name: Archive Release
         uses: thedoctor0/zip-release@master

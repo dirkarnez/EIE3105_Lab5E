@@ -15,13 +15,13 @@ jobs:
     env:
       targetZip: ${{ github.event.repository.name }}-${{ github.ref_name }}-arm-compiler-for-embedded-6.19.zip
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: ${{ github.repository }}
           path: ${{ github.repository }}
           
           
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: dirkarnez/internal-keil-mdk-portable
           path: internal-keil-mdk-portable
